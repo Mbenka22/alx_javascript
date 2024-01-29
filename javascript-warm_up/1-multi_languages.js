@@ -1,5 +1,6 @@
-const multipleLines = "C is fun"+
-                       "Python is cool" +
-                       "Javascript is amazing"
+const line1 = "C is fun";
+const line2 = "Python is cool";
+const line3 = "JavaScript is amazing";
 
-console.log(multipleLines);
+console.log(line1, line2, line3);
+
