@@ -1,4 +1,2 @@
-let a = 25;
-let b = 30;
-const sum = a+b;
-console.log(sum);
+const {add} = require('./13_add')//importing using the keyword require
+console.log(add(3,5));
