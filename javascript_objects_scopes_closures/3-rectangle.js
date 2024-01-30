@@ -9,9 +9,11 @@ class Rectangle{
 print()
 {
     const myVar='X';
-    for(let i=0;i<this.height;i++){
+    for(let i=0;i<this.height;i++)
+    {
         console.log(myVar.repeat(this.width));
     }
 }
+};
 
 module.exports=Rectangle 
