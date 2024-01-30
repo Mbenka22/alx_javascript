@@ -1,4 +1,5 @@
 const SquareA=require('./5-square')
+class Square extends SquareA
 {
     charPrint(c)
     {
