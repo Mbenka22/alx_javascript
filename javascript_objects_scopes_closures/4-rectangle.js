@@ -14,15 +14,16 @@ class Rectangle{
         };
 };
 
-rotate() 
+rotate ()
 {
-
-    [this.width, this.height]=[this.height, this.width]
+    const notPermanent=this.width;
+    this.width=this.height;
+    this.height=notPermanent
 };
-double()
+double ()
 {
-    this.height *=2;
-    this.width *=2;
+    this.width*=2;
+    this.height*=2
 };
 
 
