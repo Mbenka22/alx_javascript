@@ -8,10 +8,10 @@ class Rectangle{
 };
 print()
 {
-    const myVar='X';
+    const test='X';
     for(let i=0;i<this.height;i++)
     {
-        console.log(myVar.repeat(this.width));
+        console.log(test.repeat(this.width));
     }
 }
 ;
