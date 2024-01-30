@@ -1,8 +1,8 @@
 class Rectangle{
     constructor(w,h){
     if (w>0 && h>0)
-        {this.width=w;
-    this.height=h;}
+        {this.width=w=2;
+    this.height=h=3;}
         }
     
 };
@@ -14,6 +14,6 @@ print()
         console.log(myVar.repeat(this.width));
     }
 }
-};
+;
 
 module.exports=Rectangle 
