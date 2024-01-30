@@ -4,8 +4,7 @@ class Rectangle{
         {this.width=w;
     this.height=h;}
         }
-    w=2;
-    h=3;
+    
 };
 print()
 {
