@@ -1,6 +1,6 @@
-const languages = ["C is fun", "Python is cool", "JavaScript is amazing"];
+const myVar = ["C is fun", "Python is cool", "JavaScript is amazing"];
 
-for (const language of languages)
+for (const _r of myVar)
  {
-  console.log(language);
+  console.log(myVar);
 }
