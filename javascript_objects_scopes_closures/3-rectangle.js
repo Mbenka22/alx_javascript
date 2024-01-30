@@ -6,13 +6,15 @@ class Rectangle{
         }
     
 };
-print()
+print() 
 {
-    const test='X';
-    for(let i=0;i<this.height;i++)
+    const m = 'X'
+    for (let i = 0; i < this.height; i++) 
     {
-        console.log(test.repeat(this.width));
-    }
-};
+        console.log('X'.repeat(this.width));
+    };
+    };
+    
+
 
 module.exports=Rectangle ;
