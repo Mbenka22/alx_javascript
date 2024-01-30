@@ -1,10 +1,11 @@
 class Rectangle{
     constructor(w,h){
     if (w>0 && h>0)
-        {this.width=w=2;
-    this.height=h=3;}
+        {this.width=w;
+    this.height=h;}
         }
-    
+    w=2;
+    h=3;
 };
 print()
 {
@@ -14,4 +15,4 @@ print()
     }
 }
 
-module.exports=Rectangle
+module.exports=Rectangle 
