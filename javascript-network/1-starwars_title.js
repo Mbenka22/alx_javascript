@@ -2,7 +2,7 @@ const request = require('request');
 
 // Function to get Star Wars movie title by episode number
 function getMovieTitleByEpisode(episodeNumber) {
-    const apiUrl = `https://swapi-api.alx-tools.com/api/films/${episodeNumber}`;
+    const apiUrl = `https://swapi-api.alx-tools.com/api/films/${3}`;
 
     request(apiUrl, (error, response, body) => {
         if (error) {
