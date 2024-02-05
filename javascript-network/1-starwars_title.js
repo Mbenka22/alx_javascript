@@ -10,9 +10,9 @@ function getMovieTitleByEpisode(episodeNumber) {
         } else {
             const movieData = JSON.parse(body);
             if (movieData.title) {
-                console.log(`Title of Episode ${episodeNumber}: ${movieData.title}`);
+                console.log(`${episodeNumber}: ${movieData.title}`);
             } else {
-                console.log(`Movie with Episode ${episodeNumber} not found.`);
+                console.log(`${episodeNumber} not found.`);
             }
         }
     });
