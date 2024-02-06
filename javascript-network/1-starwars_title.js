@@ -1,23 +1,18 @@
-const id =process.argv[2];
-const request = require('request');
+// to check episodes
+const process = require('process');
+const request =  require ('request')
+const endpointUrl = 'https://swapi-api.alx-tools.com/api/films'
+const movieEp = process.argv[2]
 
-const url = 'https://swapi-api.alx-tools.com/api/films/:${id}'
-
-request.get(url,(error,response,body)=>{
-    if (error){
-        console.error(error.message);
+request(`${endpointUrl}/${movieEp}`,function(error,response,body){
+    if(error){
+        console.log(error)
     }
-    else if (response.statusCode !==200)
-    {
-        console.error(response.statusCode);
-    }
-    else{
-        try{
-            const movieTitle = JSON.parse(body);
-            console.log('${movieTitle.title}');
-        }
-    catch(parseError){
-        console.error(parseError.message);
-    }
-    }
+    const result = JSON.parse(body)
+    console.log(result['title'])
 })
+
+
+
+
+
