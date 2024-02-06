@@ -1,33 +1,23 @@
+//movies by a character
 const request = require('request');
-
-// API URL of the Star Wars API films
-const apiUrl = 'https://swapi-api.alx-tools.com/api/films/';
-
-
+const apiUrl = process.argv[2];
 const characterId = 18;
+let count = 0;
 
-// Function to count movies where Wedge Antilles is present
-function countMoviesWithWedge(apiUrl, characterId) {
-    return new Promise((resolve, reject) => {
-        request(apiUrl, (error, response, body) => {
-            if (error) {
-                reject(error);
-            } else {
-                const films = JSON.parse(body).results;
-                let movieCount = 0;
-                for (const film of films) {
-                    const characters = film.characters.map(character => parseInt(character.split('/').slice(-2, -1)[0]));
-                    if (characters.includes(characterId)) {
-                        movieCount++;
-                    }
+request.get(apiUrl, (error, response, body) => {
+    if (error){
+        console.error(error.message);
+    }else if (response.statusCode !== 200){
+        console.error(response.statusCode);
+    }else {
+        const movieData = JSON.parse(body)
+        movieData.results.forEach((film) => {
+            film.characters.forEach((character) => {
+                if (character.includes(characterId)){
+                    count += 1;
                 }
-                resolve(movieCount);
-            }
-        });
-    });
-}
-
-// function call
-countMoviesWithWedge(apiUrl, characterId)
-    .then(count => console.log(`{count}`))
-    .catch(error => console.error('Error:', error));
+            })
+        })
+        console.log(count);
+    }
+});
