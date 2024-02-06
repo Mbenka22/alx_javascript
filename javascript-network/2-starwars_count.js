@@ -3,7 +3,7 @@ const request = require('request');
 // API URL of the Star Wars API films
 const apiUrl = 'https://swapi-api.alx-tools.com/api/films/';
 
-// Character ID for Wedge Antilles
+
 const characterId = 18;
 
 // Function to count movies where Wedge Antilles is present
@@ -27,7 +27,7 @@ function countMoviesWithWedge(apiUrl, characterId) {
     });
 }
 
-// Call the function and print the result
+// function call
 countMoviesWithWedge(apiUrl, characterId)
-    .then(count => console.log(`Number of movies where Wedge Antilles is present: ${count}`))
+    .then(count => console.log(`{count}`))
     .catch(error => console.error('Error:', error));
