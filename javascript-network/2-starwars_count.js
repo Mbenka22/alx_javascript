@@ -2,8 +2,8 @@
 const request = require('request');
 const apiUrl = process.argv[2];
 const characterId = 18;
-let count = 0;
 
+//function
 request.get(apiUrl, (error, response, body) => {
     if (error){
         console.error(error.message);
