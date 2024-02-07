@@ -1,6 +1,6 @@
 // to check episodes
 const process = require('process');
-const request =  require ('request')
+const request =  require ('request');
 const endpointUrl = 'https://swapi-api.alx-tools.com/api/films'
 const movieEp = process.argv[2]
 
