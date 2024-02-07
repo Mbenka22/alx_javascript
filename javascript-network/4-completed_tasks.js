@@ -30,7 +30,7 @@ function computeCompletedTasksByUser(apiUrl) {
 
             // Print users with completed tasks
             Object.keys(completedTasksByUser).forEach(userId => {
-                console.log(`User ${userId} completed ${completedTasksByUser[userId]} tasks.`);
+                console.log(`${completedTasksByUser[userId]} `);
             });
         } catch (parseError) {
             console.error('Parse error:', parseError);
