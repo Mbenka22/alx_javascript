@@ -1,7 +1,7 @@
 const request = require('request');
 
-const movieId = process.argv[2];
-const url = `https://swapi.dev/api/films/${movieId}/`;
+const Id = process.argv[2];//movie to be passed in the terminal
+const url = `https://swapi.dev/api/films/${Id}/`;
 
 request.get(url, (error, response, body) => {
   if (error) {
