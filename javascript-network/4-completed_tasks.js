@@ -1,25 +1,19 @@
 const request = require('request');
-const url = 'https://jsonplaceholder.typicode.com/todos';
 
-request(url, function (error, response, body) {
-    if (error) {
-      console.log(error);
-    } else if (response.statusCode === 200) {
-      const completed = {};
-      const tasks = JSON.parse(body);
-      
-      for (const i in tasks) {
-        const task = tasks[i];
-        if (task.completed === true) {
-          if (completed[task.userId] === undefined) {
-            completed[task.userId] = 1;
-          } else {
-            completed[task.userId]++;
-          }
-        }
+const URL = process.argv[2];
+request(URL, (error, response, body) => {
+  const aggregate = {};
+  if (error) {
+    console.log(error);
+  }
+  const json = JSON.parse(body);
+  json.forEach(element => {
+    if (element.completed) {
+      if (!aggregate[element.userId]) {
+        aggregate[element.userId] = 0;
       }
-      console.log(completed);
-    } else {
-      console.log('An error occured: ' + response.statusCode);
+      aggregate[element.userId]++;
     }
   });
+  console.log(aggregate);
+});

@@ -3,8 +3,9 @@ const request = require('request');
 const apiUrl = process.argv[2];
 const characterId = 18;
 
-//function
-request.get(apiUrl, (error, response, body) => {
+
+request.get(apiUrl, (error, response, body) =>
+    {
     if (error){
         console.error(error.message);
     }else if (response.statusCode !== 200){
@@ -18,6 +19,7 @@ request.get(apiUrl, (error, response, body) => {
                 }
             })
         })
+        let count = 0; 
         console.log(count);
     }
 });
