@@ -1,0 +1,1 @@
+The document object model(DOM) is a crucial concept in web development and forms the bridge between javascript by enabling interaction and manipulation of the content and structure of a webpage in realtime.
