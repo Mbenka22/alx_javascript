@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Creating and Removing Elements</title>
+</head>
+<body>
+  <div id="container"></div>
+  <button onclick="showParagraph()">Toggle Paragraph</button>
+
+
+  <script>
+    const container = document.getElementById("container");
+       const newParagraph= document.createElement("p");
+       newParagraph.textContent = "New paragraph which apparently i can not see"
+       container.appendChild(newParagraph);//passin the 'newParagraph'element
+
+       //variable to check paragrapg visibility
+       let isVisible = true
+       
+       //function to check if it is visible
+       function  showParagraph(){
+        if (isVisible){
+            newParagraph.style.display ="none"//hiding the paragraph
+         } else {
+        newParagraph.style.display = "block"; // Show the paragraph
+      }
+      isVisible = !isVisible;
+    }
+        
+       
+  </script>
+</body>
+</html>
