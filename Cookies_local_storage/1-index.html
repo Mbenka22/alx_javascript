@@ -21,17 +21,15 @@
     </form>
     <h1>Cookies</h1>
     <script>
-        function setCookies(cname,cvalue,exdays) {
-            const d = newDate();
-            d.setTime(d.getTime()+(exdays*24*60*60*1000));
-            let expires = "expires"+d.toUTCString();
-            document.cookie=cname+ "="+cvalue+";"+expires
-
+        function setCookies() {
             const firstname = document.getElementById('firstname').value;
             const email = document.getElementById('email').value;
 
-            document.cookie = "firstname=" + firstname;
-            document.cookie = "email=" + email;
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 10); // Expire in 10 days
+
+            document.cookie = "firstname=" + firstname + "; expires=" + expirationDate.toUTCString();
+            document.cookie = "email=" + email + "; expires=" + expirationDate.toUTCString();
         }
 
         function showCookies() {
