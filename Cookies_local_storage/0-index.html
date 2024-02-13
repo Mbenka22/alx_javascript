@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Form</title>
-  <script>
-    function setCookies() {
-      var firstname = document.getElementById('firstname').value;
-      var email = document.getElementById('email').value;
-      
-      document.cookie = "firstname=" + firstname;
-      document.cookie = "email=" + email;
-    }
-    
-    function showCookies() {
-      var cookies = document.cookie.split(';');
-      var cookiesString = "Cookies: ";
-      
-      for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim();
-        cookiesString += cookie + ", ";
-      }
-      
-      var p = document.createElement('p');
-      p.innerHTML = cookiesString;
-      
-      document.body.appendChild(p);
-    }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+
 </head>
+
 <body>
-  <form id="loginForm">
-    <label for="firstname">First Name:</label>
-    <input type="text" id="firstname" name="firstname"><br><br>
-    
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email"><br><br>
-    
-    <button type="button" onclick="setCookies()">Log me in</button>
-    <button type="button" onclick="showCookies()">Show the cookies</button>
-  </form>
+    <form id="loginForm">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <button type="button" onclick="setCookies()">Log me in</button>
+        <button type="button" onclick="showCookies()">Show the cookies</button>
+    </form>
+    <h1>Cookies</h1>
+    <script>
+        function setCookies() {
+            var firstname = document.getElementById('firstname').value;
+            var email = document.getElementById('email').value;
+
+            document.cookie = "firstname=" + firstname;
+            document.cookie = "email=" + email;
+        }
+
+        function showCookies() {
+            var cookies = document.cookie.split(';');
+            var cookiesString = "Cookies: ";
+
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                cookiesString += cookie + ", ";
+            }
+
+            var p = document.createElement('p');
+            p.innerHTML = cookiesString;
+
+            document.body.appendChild(p);
+        }
+    </script>
 </body>
+
 </html>
