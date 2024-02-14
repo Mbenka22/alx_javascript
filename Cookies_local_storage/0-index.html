@@ -4,45 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-
+    <title>Login cookie Form</title>
 </head>
 
 <body>
-    <form id="loginForm">
-        <label for="firstname">First Name:</label>
-        <input type="text" id="firstname" name="firstname"><br><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email"><br><br>
-
-        <button type="button" onclick="setCookies()">Log me in</button>
-        <button type="button" onclick="showCookies()">Show the cookies</button>
-    </form>
-    <h1>Cookies</h1>
+    <h1>Login to the website</h1>
+    <input type="text" id="firstname" placeholder="firstname">
+    <input type="text" id="email" placeholder="email">
+    <button id="login">Log me in</button>
+    <script src="https://cdn.jsdeliver.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
     <script>
+        const login = document.getElementById('login');
+        login.addEventListener('click', setCookies);
+
         function setCookies() {
-            var firstname = document.getElementById('firstname').value;
-            var email = document.getElementById('email').value;
+            const firstname = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
 
-            document.cookie = "firstname=" + firstname;
-            document.cookie = "email=" + email;
+            document.cookie = 'firstname=${firstname}';
+            document.cookie = 'email=${email}';
         }
-
         function showCookies() {
-            var cookies = document.cookie.split(';');
-            var cookiesString = "Cookies: ";
-
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = cookies[i].trim();
-                cookiesString += cookie + ", ";
+            const cookies = document.cookie.split('; ');
+            const para = document.createElement('p');//to create a paragraph using innerhtml function
+            para.innerHTML='Cookies: ';
+            for (let i = 0; i< cookie.length; i++){
+                let cookie=cookies[i];
+                if(cookie.startsWith('firstname=')|| cookie.startsWith('email=')){
+                    para.innerHTML += cookie.split('=')[1]+ ', ';
+                }
             }
-
-            var p = document.createElement('p');
-            p.innerHTML = cookiesString;
-
-            document.body.appendChild(p);
+            para.innerHTML =para.innerHTML.slice(0, -2);
+            document.body.appendChild(para)
         }
+
     </script>
 </body>
 
