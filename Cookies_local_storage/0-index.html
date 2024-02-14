@@ -16,29 +16,30 @@
     <script>
         const login = document.getElementById('login');
         login.addEventListener('click', setCookies);
-
+    
         function setCookies() {
             const firstname = document.getElementById('firstname').value;
             const email = document.getElementById('email').value;
-
-            document.cookie = 'firstname=${firstname}';
-            document.cookie = 'email=${email}';
+    
+            document.cookie = `firstname=${firstname}`;
+            document.cookie = `email=${email}`;
         }
+    
         function showCookies() {
             const cookies = document.cookie.split('; ');
-            const para = document.createElement('p');//to create a paragraph using innerhtml function
-            para.innerHTML='Cookies: ';
-            for (let i = 0; i< cookie.length; i++){
-                let cookie=cookies[i];
-                if(cookie.startsWith('firstname=')|| cookie.startsWith('email=')){
-                    para.innerHTML += cookie.split('=')[1]+ ', ';
+            const paragraph = document.createElement('p');
+            paragraph.innerHTML = 'Cookies: ';
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i];
+                if (cookie.startsWith('firstname=') || cookie.startsWith('email=')) {
+                    paragraph.innerHTML += cookie.split('=')[1] + ', ';
                 }
             }
-            para.innerHTML =para.innerHTML.slice(0, -2);
-            document.body.appendChild(para)
+            paragraph.innerHTML = paragraph.innerHTML.slice(0, -2); 
+            document.body.appendChild(paragraph);
         }
-
     </script>
+    
 </body>
 
 </html>
