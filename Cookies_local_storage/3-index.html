@@ -7,7 +7,6 @@
     <style>
         /* CSS styles */
         .login-form {
-            display: none;
             width: 300px;
             margin: 0 auto;
             padding: 20px;
@@ -38,73 +37,87 @@
         .login-form button:hover {
             background-color: #0056b3;
         }
+        .welcome-message {
+            text-align: center;
+        }
+        .logout-link {
+            font-style: italic;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
+    <div class="welcome-message" id="welcomeMessage"></div>
+    <div id="loginForm" class="login-form" style="display:none;">
+        <h2>Login</h2>
+        <form>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 
-<div id="welcomeMessage"></div>
-<div id="loginForm" class="login-form">
-    <h2>Login</h2>
-    <form>
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
-</div>
-
-<script>
-    function showForm() {
-        var welcomeMessage = document.getElementById('welcomeMessage');
-        var loginForm = document.getElementById('loginForm');
-
-        if (welcomeMessage) {
-            welcomeMessage.style.display = 'none';
-        }
-        if (loginForm) {
-            loginForm.style.display = 'block';
-        }
-    }
-
-    function hideForm() {
-        var loginForm = document.getElementById('loginForm');
-        if (loginForm) {
-            loginForm.style.display = 'none';
-        }
-    }
-
-    function deleteCookiesAndShowForm() {
-        // Delete cookies here (code not provided as it's specific to your implementation)
-
-        // Call showForm function to display the form
-        showForm();
-    }
-
-    function showWelcomeMessageOrForm() {
-        var loggedIn = false; // Check if the user is logged in (you need to implement this logic)
-
-        if (loggedIn) {
-            // Build and display welcome message
+    <script>
+        function showForm() {
             var welcomeMessage = document.getElementById('welcomeMessage');
-            welcomeMessage.innerHTML = '<h1>Welcome FIRSTNAME <a href="#" id="logoutLink">(logout)</a></h1>';
+            var loginForm = document.getElementById('loginForm');
 
-            var logoutLink = document.getElementById('logoutLink');
-            logoutLink.style.fontStyle = 'italic';
-            logoutLink.style.fontWeight = 'normal';
-            logoutLink.style.marginLeft = '10px';
-            logoutLink.addEventListener('click', function(event) {
-                event.preventDefault();
-                deleteCookiesAndShowForm();
+            if (welcomeMessage) {
                 welcomeMessage.style.display = 'none';
-            });
-        } else {
-            // Show the login form
-            showForm();
+            }
+            if (loginForm) {
+                loginForm.style.display = 'block';
+            }
         }
-    }
 
-    // Call showWelcomeMessageOrForm function to determine what to display
-    showWelcomeMessageOrForm();
-</script>
+        function hideForm() {
+            var loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.style.display = 'none';
+            }
+        }
 
+        function setCookies() {
+            const firstnameValue = document.getElementById("firstname").value;
+            const emailValue = document.getElementById("email").value;
+
+            const expirationDate = new Date();
+            expirationDate.setTime(
+                expirationDate.getTime() + 10 * 24 * 60 * 60 * 1000
+            );
+
+            document.cookie = `firstname=${firstnameValue}; expires=${expirationDate.toUTCString()}; path=/`;
+            document.cookie = `email=${emailValue}; expires=${expirationDate.toUTCString()}; path=/`;
+        }
+
+
+        function showWelcomeMessageOrForm() {
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            const username = getCookie('username');
+
+            if (username) {
+                // User is logged in
+                document.body.innerHTML = "<h1>Welcome " + username + "<a href='#' class='logout-link' onclick='deleteCookiesAndShowForm()'> (logout)</a></h1>";
+            } else {
+                // not logged in
+                showForm();
+            }
+        }
+
+        
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.startsWith(name + '=')) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return null;
+        }
+
+        
+        showWelcomeMessageOrForm();
+    </script>
 </body>
 </html>
