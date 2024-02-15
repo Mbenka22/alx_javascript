@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        /* CSS styles */
+        .login-form {
+            display: none;
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-form h2 {
+            text-align: center;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div id="welcomeMessage"></div>
+<div id="loginForm" class="login-form">
+    <h2>Login</h2>
+    <form>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+    function showForm() {
+        var welcomeMessage = document.getElementById('welcomeMessage');
+        var loginForm = document.getElementById('loginForm');
+
+        if (welcomeMessage) {
+            welcomeMessage.style.display = 'none';
+        }
+        if (loginForm) {
+            loginForm.style.display = 'block';
+        }
+    }
+
+    function hideForm() {
+        var loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.style.display = 'none';
+        }
+    }
+
+    function deleteCookiesAndShowForm() {
+        // Delete cookies here (code not provided as it's specific to your implementation)
+
+        // Call showForm function to display the form
+        showForm();
+    }
+
+    function showWelcomeMessageOrForm() {
+        var loggedIn = false; // Check if the user is logged in (you need to implement this logic)
+
+        if (loggedIn) {
+            // Build and display welcome message
+            var welcomeMessage = document.getElementById('welcomeMessage');
+            welcomeMessage.innerHTML = '<h1>Welcome FIRSTNAME <a href="#" id="logoutLink">(logout)</a></h1>';
+
+            var logoutLink = document.getElementById('logoutLink');
+            logoutLink.style.fontStyle = 'italic';
+            logoutLink.style.fontWeight = 'normal';
+            logoutLink.style.marginLeft = '10px';
+            logoutLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                deleteCookiesAndShowForm();
+                welcomeMessage.style.display = 'none';
+            });
+        } else {
+            // Show the login form
+            showForm();
+        }
+    }
+
+    // Call showWelcomeMessageOrForm function to determine what to display
+    showWelcomeMessageOrForm();
+</script>
+
+</body>
+</html>
