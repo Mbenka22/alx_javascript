@@ -1,47 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookies set and show</title>
-</head>
-<body>
-    <input type="text" id="firstname" placeholder="First Name">
-    <br>
-    <input type="text" id="email" placeholder="Email">
-    <br>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set Cookies</title>
+  </head>
+  <body>
+    <h1>Login to the website</h1>
+    <input type="text" id="firstname" placeholder="First Name" />
+    <input type="text" id="email" placeholder="Email" />
     <button onclick="setCookies()">Log me in</button>
-    <button onclick="showCookies()">Show the cookies</button>
+
+    <div class="myContainer">
+      <h1>Cookies</h1>
+      <button onclick="showCookies()">Show the cookies</button>
+    </div>
+
     <script>
+      function setCookies() {
+        const firstnameValue = document.getElementById("firstname").value;
+        const emailValue = document.getElementById("email").value;
 
-        function setCookies() {
-            const firstnameInput = document.getElementById('firstname');
-            const emailInput = document.getElementById('email');
+        document.cookie = `firstname=${firstnameValue}; path=/`;
+        document.cookie = `email=${emailValue};  path=/`;
+      }
 
-            const firstname = firstnameInput.value;
-            const email = emailInput.value;
+      function showCookies() {
+        const cookiesParagraph = document.createElement("p");
+        const cookiesValue = document.cookie;
 
-            document.cookie = `firstname=${firstname}`;
-            document.cookie = `email=${email}`;
-        }
-
-        function showCookies() {
-            const cookies = document.cookie.split('; ');
-            const paragraph = document.createElement('p');
-            paragraph.innerHTML = 'Cookies: ';
-
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i];
-                if (cookie.startsWith('firstname=') || cookie.startsWith('email=')) {
-                    paragraph.innerHTML += cookie.split('=')[1] + ', ';
-                }
-            }
-
-            paragraph.innerHTML = paragraph.innerHTML.slice(0, -2);
-            document.body.appendChild(paragraph);
-        }
-
+        cookiesParagraph.innerHTML = `Cookies: ${cookiesValue}`;
+        document.body.appendChild(cookiesParagraph);
+      }
     </script>
-</body>
+  </body>
+</html>
 
 </html>
