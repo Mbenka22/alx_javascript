@@ -21,7 +21,7 @@ const studentHogwarts = (function() {
       }
     };
   })();
-  
+  //creating an instance for harry 
   let harry = Object.create(studentHogwarts);
   harry.setName('Harry');
   harry.rewardStudent();
