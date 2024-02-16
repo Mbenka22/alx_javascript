@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <script>
+        // Check if local storage is supported
+        if (typeof Storage === "undefined") {
+            alert("Sorry, your browser does not support Web storage. Try again with a better one.");
+        } else {
+            // Local storage is available
+            // Call the createStore and displayCart functions
+            createStore();
+            displayCart();
+        }
+
+        // Array of available items
+        const availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+        // Function to add an item to the cart
+        function addItemToCart(item) {
+            localStorage.setItem(item, true);
+            displayCart();
+        }
+
+        // Function to create the store
+        function createStore() {
+            const itemList = document.createElement("ul");
+            document.body.appendChild(itemList);
+
+            availableItems.forEach((item) => {
+                const listItem = document.createElement("li");
+                listItem.textContent = item;
+                listItem.addEventListener("click", function () {
+                    addItemToCart(item);
+                });
+                itemList.appendChild(listItem);
+            });
+        }
+
+        // Function to display items in the cart
+        function displayCart() {
+            const cartItems = Object.keys(localStorage);
+
+            // Remove any existing cart display before updating it
+            const existingCartDisplay = document.getElementById("cart");
+            if (existingCartDisplay) {
+                existingCartDisplay.parentNode.removeChild(existingCartDisplay);
+            }
+
+            if (cartItems.length === 0) {
+                return;
+            }
+
+            const cartDisplay = document.createElement("div");
+            cartDisplay.id = "cart";
+
+            const cartMessage = document.createElement("p");
+            cartMessage.textContent = `You previously had ${cartItems.length} item(s) in your cart.`;
+            cartDisplay.appendChild(cartMessage);
+
+            document.body.appendChild(cartDisplay);
+        }
+    </script>
+</body>
+</html>
