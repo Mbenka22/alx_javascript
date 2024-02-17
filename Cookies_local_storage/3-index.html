@@ -10,7 +10,7 @@
     <div id="loginFormContainer">
       <h2>Login to the website</h2>
       <input type="text" id="firstname" placeholder="First Name" />
-      <input tqype="text" id="email" placeholder="Email" />
+      <input type="text" id="email" placeholder="Email" />
       <button onclick="setCookies()">Log me in</button>
     </div>
 
@@ -66,7 +66,7 @@
         welcomeMessage.id = "welcomeMessage";
 
         if (firstnameValue) {
-          welcomeMessage.innerHTML = `Welcome: ${firstnameValue} <a href="#" onclick="deleteCookiesAndShowForm()" style="font-weight: normal; font-style: italic; margin-left: 10px;">(logout)</a>`;
+          welcomeMessage.innerHTML = `Welcome: ${firstnameValue} <a href="#" onclick="deleteCookiesAndShowForm()" style="font-weight: normal; font-style: bold; margin-left: 10px;">(logout)</a>`;
           document.body.innerHTML = "";
           document.body.appendChild(welcomeMessage);
         } else {
