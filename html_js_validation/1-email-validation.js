@@ -1,21 +1,24 @@
-//validate email format
-function validateEmail(email){
-   const  regex  = /^[^\s@]+@[^\s@]=\.[^\s@]+$/
-   return regex.test(email)
-}
-//handling submission
-function handleSubmit(event){
-    event.preventDefault()//to prevent default form submission behaviour
-    const emailInput = document.getElementById('email').Value
-    const errorElement = document.getElementById('error')
 
-    if(!validateEmail(emailInput)){
-        errorElement.textContent='Please enter a valid email address.'
-    }
-    else{
-        errorElement.textContent='' // no error if email address is valid
-        console.log('email is valid:', emailInput)
+
+// Function to validate the email
+function validateEmail() {
+    var email = document.getElementById('email').value;
+    var errorElement = document.getElementById('error');
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+        errorElement.textContent = "Please enter a valid email address.";
+        return false; // Prevent form submission
+    } else {
+        errorElement.textContent = ""; // Clear any previous error message
+        return true; // Allow form submission
     }
 }
-//event listener to the form submission
-document.getElementById('emailForm')
+
+// Add event listener to the form for form submission
+document.getElementById('emailForm').addEventListener('submit', function(event) {
+    // Validate the email when the form is submitted
+    if (!validateEmail()) {
+        event.preventDefault(); // Prevent form submission if validation fails
+    }
+});
